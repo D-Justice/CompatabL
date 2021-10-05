@@ -1,6 +1,5 @@
-import react, {useEffect} from 'react';
 import './App.css';
-import Application from './application'
+import Application from './Application'
 
 
 

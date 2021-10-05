@@ -1,5 +1,214 @@
 {
   "users": [],
+  "selectedUser": [
+    {
+      "id": 1,
+      "userInfo": {
+        "results": [
+          {
+            "gender": "female",
+            "name": {
+              "title": "Ms",
+              "first": "Janet",
+              "last": "Scott"
+            },
+            "location": {
+              "street": {
+                "number": 9506,
+                "name": "Mill Road"
+              },
+              "city": "Edinburgh",
+              "state": "Grampian",
+              "country": "United Kingdom",
+              "postcode": "R9 7YZ",
+              "coordinates": {
+                "latitude": "14.9061",
+                "longitude": "80.1804"
+              },
+              "timezone": {
+                "offset": "+7:00",
+                "description": "Bangkok, Hanoi, Jakarta"
+              }
+            },
+            "email": "janet.scott@example.com",
+            "login": {
+              "uuid": "7dbcf756-ae04-416b-9747-204e644a0920",
+              "username": "heavydog155",
+              "password": "dipper",
+              "salt": "3dqfzRKC",
+              "md5": "2a5d78dc494ed94152e4a683207deb61",
+              "sha1": "786508b9f615504bb0a1a6b06ecc27313a5d6c02",
+              "sha256": "2eef9e38b281b7d1772cd94769ce56fb38948834a6b76cf447b561e81272c40b"
+            },
+            "dob": {
+              "date": "1958-09-02T23:50:52.647Z",
+              "age": 63
+            },
+            "registered": {
+              "date": "2017-07-18T11:58:29.433Z",
+              "age": 4
+            },
+            "phone": "015394 01834",
+            "cell": "0724-231-103",
+            "id": {
+              "name": "NINO",
+              "value": "AB 87 58 20 K"
+            },
+            "picture": {
+              "large": "https://randomuser.me/api/portraits/women/36.jpg",
+              "medium": "https://randomuser.me/api/portraits/med/women/36.jpg",
+              "thumbnail": "https://randomuser.me/api/portraits/thumb/women/36.jpg"
+            },
+            "nat": "GB"
+          }
+        ],
+        "info": {
+          "seed": "a70b3e5a7e01299d",
+          "results": 1,
+          "page": 1,
+          "version": "1.3"
+        }
+      },
+      "photo": "https://images.unsplash.com/photo-1521146764736-56c929d59c83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjUwNTR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzM0Njg5Nzc&ixlib=rb-1.2.1&q=80&w=400",
+      "userBio": "Hi, I’m Ted! Thanks for stopping by my online dating profile. I’m not the best at describing myself, so I reached out to a few friends and asked them to tell me what I’m like so I could share that with you. Here’s what they had to say. Ted is driven, goal-oriented, and goes after what he wants in life.Ted is a real catch. He’s caring, dependable, and someone who could really be your rock. If you want to see if my friends are right or they’re just telling me what I want to hear (kidding), we should chat! Send me a message and let’s start the conversation..",
+      "activities": [
+        "Rogue Lawnmowing",
+        "Scrapbooking",
+        "Scrapbooking",
+        "Crocheting"
+      ]
+    }
+  ],
   "matches": [],
-  "forms": []
+  "forms": [],
+  "biographies": [
+    "Hi! I am brand new to online dating. While I’m still figuring this all out, here’s something I know for sure—I’m excited to be here! The chance to meet unique, engaging, and interesting women is pretty dang neat. If you think you might fit that mold, drop me a message. I work in the finance industry. And while I like to work hard, I make sure to leave time to enjoy life. I’m a fan of wine, movies, hiking, and getting out of town for the weekend. Let’s chat and see if maybe we’re a good fit!",
+    "Isn’t online dating a blast? Okay, maybe it can be challenging at times, but it’s still exciting that you have the chance to meet someone special who you might have never met elsewhere. I’m a proud dog mom, an avid gym-goer, and, if you ask my friends, a bit quirky at times. I’m looking for a man who compliments my life and is ready to enjoy all that this world has to bring to the table. If you think we might be a good match, send me a message.",
+    "Hi! If I had to pick three words to describe me they would be positive, a little shy, and someone who loves to laugh. Okay, that was a few more than three words, but it’s fun to break the rules from time to time, right? I’m new to online dating, but I know what I’m looking for in a man. My Christian faith is important to me, so I want to find a man who feels the same way. Additionally, I’m really into movies, so a guy who likes to cuddle up on the couch instead of going out on a Friday night is the right match for me. If you think maybe we could be right for each other, send me a message! I’m kind of shy, but if you reach out, I come out of my shell.",
+    "Hi, I’m Ted! Thanks for stopping by my online dating profile. I’m not the best at describing myself, so I reached out to a few friends and asked them to tell me what I’m like so I could share that with you. Here’s what they had to say. Ted is driven, goal-oriented, and goes after what he wants in life.Ted is a real catch. He’s caring, dependable, and someone who could really be your rock. If you want to see if my friends are right or they’re just telling me what I want to hear (kidding), we should chat! Send me a message and let’s start the conversation..",
+    "Hi, I'm Joe. I'm an attorney by day, and in my spare time, I'm writing my first novel. Training for the next marathon is my go-to stress relief. I'm an avid reader of the Economist and the Atlantic. I keep up-to-date with politics but try to stay out of the drama. Early morning meditation is my spiritual practice. My ex-wife and I co-parent our two kids. I'm here on this app to meet you so can you do me one favor to help me out? I have a quick question for you to answer. What's the first date you've always wanted to go on and have never come close to? Click the message button and let me know!",
+    "Hi, I'm Sam. I own my own Software Development company. I love jazz and go watch my favorite bands as often as possible. To get out of my head, I go rock climbing. I grew up in a very political family and I carry on that tradition by being active in the local campaigns. I find a lot of peace by attending church on Sunday mornings and by being a part of that community. I've been in a couple of great long term relationships and am ready to find someone special to build a life with. Send me a message and let me know what your favorite type of food is. I know the best spots in town!"
+  ],
+  "hobbies": [
+    "Rogue Lawnmowing",
+    "Woodworking",
+    "Croquet",
+    "Sculpting",
+    "Ax Throwing",
+    "Weight Lifting",
+    "Chess",
+    "Crocheting",
+    "Video Game Collecting",
+    "jogging",
+    "Scrapbooking",
+    "Bird Watching",
+    "Storm Chasing",
+    "Bullion Collecting",
+    "Needlepoint",
+    "Soap Making",
+    "ButterFly Watching",
+    "Tennis"
+  ],
+  "questions": [
+    {
+      "question": "I’VE BEEN WATCHING X. ANY GOOD MOVIES OR TV SHOWS?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    },
+    {
+      "question": "So, you married?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    },
+    {
+      "question": "Want to guess what my passive-aggressive coworker emailed me today?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    },
+    {
+      "question": "If I pay for drinks, can I complain about my terrible roommate clogging the sink again?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    },
+    {
+      "question": "I’VE BEEN WATCHING X. ANY GOOD MOVIES OR TV SHOWS?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    },
+    {
+      "question": "So, you married?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    },
+    {
+      "question": "Want to guess what my passive-aggressive coworker emailed me today?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    },
+    {
+      "question": "If I pay for drinks, can I complain about my terrible roommate clogging the sink again?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    },
+    {
+      "question": "Want to guess what my passive-aggressive coworker emailed me today?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    },
+    {
+      "question": "If I pay for drinks, can I complain about my terrible roommate clogging the sink again?",
+      "answers": [
+        "yes",
+        "no",
+        "X-men",
+        "idk"
+      ],
+      "correctAnswer": "X-men"
+    }
+  ]
 }
