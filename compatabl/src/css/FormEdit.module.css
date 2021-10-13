@@ -1,0 +1,11 @@
+
+
+
+.formContainer {
+    overflow-y: scroll;
+    max-height: 550px;
+}
+
+.formInput {
+    width: 80%;
+}

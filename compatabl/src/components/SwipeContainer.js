@@ -25,7 +25,7 @@ function SwipeContainer({loading, randomiseUser, photo, userInfo, userBio, activ
         return(splitActivities)
     }
 
-    loading? console.log('loading') : console.log('done')
+    
     let user = userInfo.results[0]
     return(
         <div>
