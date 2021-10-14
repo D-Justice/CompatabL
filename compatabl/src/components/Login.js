@@ -33,7 +33,7 @@ export default function Login({ accountCreated, login}) {
         <div>
             <h1>Login page</h1>
             <Container>
-                {accountCreated && <Alert variant='success'>Account created! Please log in to continue</Alert>}
+                {accountCreated && !error && <Alert variant='success'>Account created! Please log in to continue</Alert>}
                 <Row>
                     <Col>
                         <Form onSubmit={(e) => {

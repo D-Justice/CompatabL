@@ -9,21 +9,22 @@ import ProfileBar from './ProfileBar';
 
 export default function Signup({submitUserSignup}) {
     const history = useHistory()
-    const [userObject, setUserObject] = useState()
+    const [userObject, setUserObject] = useState({bio: ''})
     const [error, setError] = useState(false)
     const handleSubmit = () => {
         const {
             email,
-            username,
+            firstName,
             password,
-            profilePicture,
-            userBio,
+            photo,
+            bio,
             age,
             gender,
-            favouriteActivities
+            activities,
+            preference
         } = userObject
-        if (email && username && password && profilePicture) {
-            submitUserSignup(email, username, password, profilePicture, userBio, age, gender, favouriteActivities)
+        if (email && firstName && password && photo && preference) {
+            submitUserSignup(email, firstName, password, photo, bio, age, gender, activities, preference)
             history.push('/login')
             setError(false)
         } else {
@@ -32,24 +33,27 @@ export default function Signup({submitUserSignup}) {
         
     }
     const renderAge = () => {
-        let oneHundredArray = [...Array(100).keys()]
+        let oneHundredArray = [30, ...Array(100).keys()]
         
         return oneHundredArray.map(((each, i) => {
-                return <option value={each}>{each}</option>
+                if (i > 18) {
+                    return <option value={each}>{each}</option>
+                }
+                
         }))
              
     }
     const handleChange = (key, value) => {
-        if (key === 'favouriteActivities') {
+        if (key === 'activities') {
             value = value.split(',')
             console.log(value)
         }
 
         setUserObject({...userObject, [key] : value})
-        console.log(userObject)
+        
 
         }
-        
+        console.log('userObject', userObject)
     return (
         <div>
             <h1>Signup page</h1>
@@ -68,7 +72,7 @@ export default function Signup({submitUserSignup}) {
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Label>Username *</Form.Label>
-                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='username' type="text" placeholder="username"></Form.Control>
+                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='firstName' type="text" placeholder="username"></Form.Control>
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Label>Password *</Form.Label>
@@ -76,11 +80,12 @@ export default function Signup({submitUserSignup}) {
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Label>Profile picture *</Form.Label>
-                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='profilePicture' type="text" placeholder="image URL"></Form.Control>
+                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='photo' type="text" placeholder="image URL"></Form.Control>
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Bio</Form.Label>
-                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='userBio' as="textarea" rows={3} placeholder="biography -- can be edited later"></Form.Control>
+                                <Form.Label>Bio (400 characters)</Form.Label>
+                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} maxLength={400} name='bio' as="textarea" rows={3} placeholder="biography -- can be edited later"></Form.Control>
+                                <Form.Label >{400 - userObject.bio.split('').length} Characters left</Form.Label>
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Label>Age</Form.Label>
@@ -101,8 +106,18 @@ export default function Signup({submitUserSignup}) {
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Favourite Activities</Form.Label>
-                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='favouriteActivities' type="text" placeholder="favourite activities (seperated by a ',')"></Form.Control>
+                                <Form.Label>Favourite Activities (Max 4)</Form.Label>
+                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='activities' type="text" placeholder="favourite activities (seperated by a ',')"></Form.Control>
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Preference*</Form.Label>
+                                <Form.Select onChange={(e)=> handleChange(e.target.name, e.target.value)} name='preference'>
+                                    <option value='N/A'>Please select preference</option>
+                                    <option value='Female'>Female</option>
+                                    <option value='Male'>Male</option>
+                                    <option value='Both'>Both</option>
+
+                                </Form.Select>
                             </Form.Group>
 
                             <Button type='submit' onSubmit={(e)=>e.preventDefault()} variant="danger">Create</Button>
@@ -110,7 +125,7 @@ export default function Signup({submitUserSignup}) {
 
                     </Col>
                     <Col lg={5}>
-                        {!!userObject && <ProfileBar user={userObject} /> }
+                        {userObject && <ProfileBar user={userObject} /> }
                     </Col>
                 </Row>
             </Container>

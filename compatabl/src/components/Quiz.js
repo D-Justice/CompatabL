@@ -5,6 +5,7 @@ import styles from '../css/Quiz.module.css'
 import { useHistory } from 'react-router-dom'
 import Score from './Score'
 import { matches } from 'dom-helpers';
+import { v4 } from 'uuid';
 
 
 
@@ -55,6 +56,7 @@ function Quiz({ loggedInUser, calculateScore, renderScore, score, questions, pho
                     age: user.dob.age,
                     activities: activities,
                     bio: userBio,
+                    id: v4(),
                     photo: photo})
             
             console.log(updatedMatches,'updated')

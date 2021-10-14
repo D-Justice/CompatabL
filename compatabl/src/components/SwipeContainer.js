@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Spinner } from 'react-bootstrap'
 import ReactCardFlip from 'react-card-flip'
 import styles from '../css/SwipeContainer.module.css'
 
@@ -29,9 +29,13 @@ function SwipeContainer({loading, randomiseUser, photo, userInfo, userBio, activ
     let user = userInfo.results[0]
     return(
         <div>
+            
             <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
             <Card className={styles.img} onClick={handleClick} style={{ border: '2px solid black', margin: 'auto'}}>
-                <Card.Img  src={photo} />
+            {!loading && <Card.Img  src={photo} />}
+            {loading && <Spinner style={{marginLeft: '45%', marginTop: '20%', marginBottom: '20%'}}animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+                </Spinner>}
                 <Card.Title as='h2'>{user.name.first} {user.name.last}</Card.Title>
                 <Card.Text>{cleanWord(user.gender)} {user.dob.age}</Card.Text>
                 <Card.Text as='small'>{renderActivities()}</Card.Text>

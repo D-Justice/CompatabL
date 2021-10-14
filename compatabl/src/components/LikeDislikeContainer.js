@@ -14,8 +14,8 @@ function LikeDislikeContainer({retrieveOnReload, saveSelectedUser, randomiseUser
         }
     return(
         <div className={styles.likedislikecontainer}>
-            <Button onClick={() => randomiseUser()} variant="danger">👎</Button>
-            <Button onClick={handleClick} variant="success">👍</Button>
+            <Button style={{fontSize: '30px'}} onClick={() => randomiseUser()} variant="danger">👎</Button>
+            <Button style={{fontSize: '30px'}} onClick={handleClick} variant="success">👍</Button>
             
         </div>
     )
