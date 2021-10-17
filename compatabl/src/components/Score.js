@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Form, Button, Row, Label, Col } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 
 export default function Score({requiredScore, saveUserToMatches, handleClick, score}) {
     const [saved, setSaved] = useState(false)
     useEffect(() => {
-        if(score >= 5 && !saved){
+        if(score >= requiredScore && !saved){
             saveUserToMatches()
         }
         setSaved(true)
@@ -14,9 +14,9 @@ export default function Score({requiredScore, saveUserToMatches, handleClick, sc
         <>
             
             <h1>Score: {score}</h1>
-            <h2>Its {score >= requiredScore ? 'a MATCH' : 'not a match...'}</h2>
-            {score < 5 && <><hr /><Button variant='primary' onClick={handleClick}>Try Again!</Button></>}
-            {score >= 5 &&
+            <h2 style={{fontSize: '45px', textAlign: 'center'}}>Its {score >= requiredScore ? 'a MATCH' : 'not a match...'}</h2>
+            {score < requiredScore && <><hr /><Button variant='primary' onClick={handleClick}>Try Again!</Button></>}
+            {score >= requiredScore &&
                 <>
                     <p>Match has been saved to your profile!</p>
                     <hr />

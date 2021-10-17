@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import styles from '../css/Profile.module.css'
-import { Alert, Button, Row, Label, Col } from 'react-bootstrap'
+import '../css/Profile.module.css'
+import { Alert, Button, Row, Col } from 'react-bootstrap'
 import Offcanvas from 'react-bootstrap/Offcanvas'
-import Collapse from 'react-bootstrap/Collapse'
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image'
 import FormEdit from './FormEdit'
 import ProfileBar from './ProfileBar'
 import {
     BrowserRouter as Router,
-    Switch,
     Route,
     Link
 } from "react-router-dom";
@@ -21,6 +19,8 @@ export default function Profile({ updateLoggedInUser, user, match, matchProfileU
     const [userQuiz, setUserQuiz] = useState()
     const [show, setShow] = useState(false)
     const [submitSuccess, setSubmitSuccess] = useState(false)
+    const [userProfileUpdated, setUserProfileUpdated] = useState(false)
+    const [matchRemoved, setMatchRemoved] = useState(false)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const renderMatches = (match, key) => {
@@ -36,11 +36,19 @@ export default function Profile({ updateLoggedInUser, user, match, matchProfileU
 
         )
     }
-    useEffect(() => {
-        fetchForm()
-        console.log('useEffect', userQuiz)
-    }, [renderFormEdit])
-    const fetchForm = () => {
+    const updateUserMatches = (matches) => {
+        user.matches = matches
+    }
+    const updateUserProfileInfo = () => {
+        setUserProfileUpdated(true)
+        setTimeout(() => setUserProfileUpdated(false), 3000)
+
+    }
+    const updateMatchRemoved = () => {
+        setMatchRemoved(true)
+        setTimeout(() => setMatchRemoved(false), 3000)
+    }
+    function fetchForm() {
         fetch('http://localhost:4000/users')
             .then(resp => resp.json())
             .then(data => {
@@ -51,7 +59,6 @@ export default function Profile({ updateLoggedInUser, user, match, matchProfileU
                 })
 
                 existingForm = existingForm.filter(each => each !== undefined)
-                console.log('existingForm', existingForm)
                 if (existingForm.length > 0) {
                     setUserQuiz(existingForm[0].userQuiz)
                 } else {
@@ -59,14 +66,21 @@ export default function Profile({ updateLoggedInUser, user, match, matchProfileU
                 }
                 
             })
+            .catch(err => console.error(err))
+
     }
-    
+    useEffect(() => {
+        fetchForm()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [renderFormEdit])
     const retrieveExistingForm = () => {
             
             setRenderFormEdit(true)
     }
+    const hideFormEdit = () => {
+        setRenderFormEdit(false)
+    }
     const renderSavedQuiz = () => {
-        console.log('userquiz', userQuiz)
         
         return userQuiz.map((each, index) => {
             return <li>{each.question}</li>
@@ -82,33 +96,35 @@ export default function Profile({ updateLoggedInUser, user, match, matchProfileU
     return (
         <div style={{ height: '100%' }}>
             {submitSuccess && <Alert variant='success'>Quiz successfully submitted!</Alert>}
+            {userProfileUpdated && <Alert variant='success'>Profile information successfully updated</Alert>}
+            {matchRemoved && <Alert variant='danger'>User has been removed from matches</Alert> }
 
             <Router>
                 <Container fluid>
                     <Row>
                         {!match && <Col lg={3}>
-                            <ProfileBar updateLoggedInUser={updateLoggedInUser} fetchForm={fetchForm} user={user} />
+                            <ProfileBar updateUserProfileInfo={updateUserProfileInfo} matchProfileUpdate={matchProfileUpdate} removeFromMatches={false} updateLoggedInUser={updateLoggedInUser} fetchForm={fetchForm} user={user} hideEdit={false}/>
                         </Col>}
-                        {!match && <Col style={{ borderRadius: '25px', background: 'lightgrey', marginRight: '10px' }}>
+                        {!match && <Col style={{ position: 'relative', borderRadius: '25px', background: 'lightgrey', marginRight: '10px' }}>
 
 
-                            {!renderFormEdit && userQuiz && <><h2>Current User Questions</h2>
-                                <ul style={{ textAlign: 'left' }}>
+                            {!renderFormEdit && userQuiz && <div style={{backgroundColor: 'darkgrey', marginTop: '10px', width: '60%', borderRadius: '25px', padding: '5px'}}><h2>Current User Questions</h2>
+                                <ul style={{ textAlign: 'left' , }}>
                                     {renderSavedQuiz()}
-                                </ul></>}
+                                </ul></div>}
                             {!renderFormEdit && !match && <Button onClick={() => {
                                 retrieveExistingForm()
 
-                            }} style={{ fontSize: '40px', marginTop: '15%' }}>Add/Edit Quiz</Button>}
+                            }} style={{ fontSize: '40px', marginTop: '10%' }}>Add/Edit Quiz</Button>}
 
-                            {renderFormEdit && !match && <FormEdit updateRenderFormEdit={updateRenderFormEdit} existingQuiz={userQuiz} user={user} />}
+                            {renderFormEdit && !match && <FormEdit hideFormEdit={hideFormEdit} updateRenderFormEdit={updateRenderFormEdit} existingQuiz={userQuiz} user={user} />}
 
 
 
 
                         </Col>}
                         {match && <Col lg={8} style={{ margin: 'auto' }}>
-                            <Route exact path="/profile/:id"><MatchProfile user={match} /></Route>
+                            <Route exact path="/profile/:id"><MatchProfile updateMatchRemoved={updateMatchRemoved} updateUserMatches={updateUserMatches} matchProfileUpdate={matchProfileUpdate} loggedInUser={user} userId={user.id} user={match} /></Route>
 
                         </Col>}
 

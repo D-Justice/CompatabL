@@ -36,7 +36,7 @@ function SwipeContainer({loading, randomiseUser, photo, userInfo, userBio, activ
             {loading && <Spinner style={{marginLeft: '45%', marginTop: '20%', marginBottom: '20%'}}animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
                 </Spinner>}
-                <Card.Title as='h2'>{user.name.first} {user.name.last}</Card.Title>
+                <Card.Title style={{textAlign: 'center'}}as='h2'>{user.name.first} {user.name.last}</Card.Title>
                 <Card.Text>{cleanWord(user.gender)} {user.dob.age}</Card.Text>
                 <Card.Text as='small'>{renderActivities()}</Card.Text>
             </Card>

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { Card, Form, Button, Row, Label, Col } from 'react-bootstrap'
+import { Card, Form, Button, Row, Col } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container';
 import styles from '../css/Quiz.module.css'
 import { useHistory } from 'react-router-dom'
 import Score from './Score'
-import { matches } from 'dom-helpers';
 import { v4 } from 'uuid';
 
 
@@ -12,6 +11,7 @@ import { v4 } from 'uuid';
 
 function Quiz({ loggedInUser, calculateScore, renderScore, score, questions, photo, userInfo, userBio, activities }) {
     const [loading, setLoading] = useState(false)
+    const [isRandomised, setIsRandomised] = useState(false)
     const [isSubmitted, setSubmitted] = useState(false)
     const [requiredScore, setRequiredScore] = useState(Math.floor(Math.random() * (10 - 1) + 1))
     let history = useHistory()
@@ -27,11 +27,17 @@ function Quiz({ loggedInUser, calculateScore, renderScore, score, questions, pho
     }
     const renderQuestions = () => {
         return questions.map((each, index) => {
+            let scramble = each.answers
+            if (!isRandomised) {
+                scramble = scramble.sort((a,b) => 0.5 - Math.random())
+                setIsRandomised(true)
+            } 
+            
             return (
                 <>
                     <Form.Label key={index}>{each.question}</Form.Label>
                     <br />
-                    {each.answers.map((answer, answerIndex) => {
+                    {scramble.map((answer, answerIndex) => {
                         return (
                             <Form.Check inline key={answerIndex} label={answer} name={index} type="radio" onClick={(e) => renderScore(each.correctAnswer, answer, each.id)} id={`inline-${answerIndex}`} />
                         )
@@ -47,7 +53,6 @@ function Quiz({ loggedInUser, calculateScore, renderScore, score, questions, pho
         history.push('/')
     }
     const saveUserToMatches = () => {
-        console.log("LoggedInUserMatches", loggedInUser.matches)
         let updatedMatches = loggedInUser.matches
         updatedMatches.push({
                     firstName: user.name.first,
@@ -59,7 +64,6 @@ function Quiz({ loggedInUser, calculateScore, renderScore, score, questions, pho
                     id: v4(),
                     photo: photo})
             
-            console.log(updatedMatches,'updated')
         fetch(`http://localhost:4000/users/${loggedInUser.id}`, {
             method: 'PATCH',
             headers: {
@@ -71,16 +75,17 @@ function Quiz({ loggedInUser, calculateScore, renderScore, score, questions, pho
         })
         .then(resp => resp.json())
         .then(data => console.log('Match has been saved!'))
+        .catch(err => console.error(err))
+
     }
     let user = userInfo.results[0]
     
-    console.log(requiredScore)
     return (
         <div>
             <Container>
                 <Row>
                     <Col>
-                    <h2>Score required: {requiredScore} or more</h2>
+                    <h2 style={{textAlign: 'center'}}>Score required: {requiredScore} or more</h2>
                         {!isSubmitted &&
                             <Form style={{ border: '2px solid black', borderRadius: '25px' }}>
                                 
@@ -99,7 +104,7 @@ function Quiz({ loggedInUser, calculateScore, renderScore, score, questions, pho
                         <Card className={styles.card}>
 
 
-                            <Card.Title as='h2'>{user.name.first} {user.name.last}</Card.Title>
+                            <Card.Title style={{textAlign: 'center'}}as='h2'>{user.name.first} {user.name.last}</Card.Title>
                             <Card.Text>{cleanWord(user.gender)} {user.dob.age}</Card.Text>
                             <Card.Text as='small'>{renderActivities()}</Card.Text>
                             <Card.Title as='h1'>Biography</Card.Title>

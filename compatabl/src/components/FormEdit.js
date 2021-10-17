@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Card, Form, Button, Row, Label, Col, Alert } from 'react-bootstrap'
+import { Form, Button, Row, Col, Alert } from 'react-bootstrap'
 import { v4 } from 'uuid';
-import styles from '../css/FormEdit.module.css'
+import '../css/FormEdit.module.css'
 
 
 
-export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
+export default function FormEdit({hideFormEdit, updateRenderFormEdit, existingQuiz, user}) {
     
     var existingForm = existingQuiz.map((each, index) => {
         return each.answers.map((answer, index) => {
@@ -17,10 +17,8 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
     existingForm = existingForm.flat()
     
     const [arr, setArr] = useState(existingForm)
-    const [removedBlocks, setRemovedBlocks] = useState([])
     const [requiredToMatch, setRequiredToMatch] = useState(1)
     const [blankError, setBlankError] = useState(false)
-    const [isSubmitted, setIsSubmitted] = useState(false)
     const quizForSubmit = useRef([])
     const firstRender = useRef(false)
     const [questions, setQuestions] = useState(existingQuiz.map((each, index) => {
@@ -31,18 +29,6 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
     }))
     const [error, setError] = useState(false)
 
-    useEffect(() => {
-        
-        if(!firstRender.current) {
-            firstRender.current = true
-        } else {
-            if(!blankError) {
-                postUserQuiz(quizForSubmit.current)
-            }
-        }
-        console.log('firstRender', firstRender, 'blankError',blankError,'quizForSubmit', quizForSubmit.current)
-        
-    }, [blankError])
     const addInput = (block, id) => {
         const arrLength = arr.filter(each => each.block === block)
 
@@ -51,7 +37,7 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
         }
 
     }
-
+    
     const removeInput = (block, id) => {
         const newArr = [...arr]
 
@@ -115,26 +101,16 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
             
             return newObject
         })
-        
-        // e.target.previousSibling.remove()
-        // e.target.remove()
-        
-        
+
         
         setQuestions(questionRemoved)
         setArr(blockRemoved)
-        
-        
-        
-
-
-
 
     }
  
-    const postUserQuiz = (quiz) => {
-        console.log('quiz', quiz)
-        fetch(`http://localhost:4000/users/${user.id}`, {
+    const postUserQuiz = (quiz, breakLoop) => {
+        if (!breakLoop) {
+            fetch(`http://localhost:4000/users/${user.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -146,6 +122,7 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
             })
             .then(resp => resp.json())
             .then(data => updateRenderFormEdit())
+            .catch(err => console.error(err))
         quiz.forEach(each => {
             
             fetch(`http://localhost:4000/questions`, {
@@ -157,17 +134,17 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
     
             })
             .then(resp => resp.json())
-            .then(data => {
-                
-                setIsSubmitted(true)})
+            .then(data => data)
+            .catch(err => console.error(err))
 
         })
+        }
+        
         
     }
     const handleSubmit = (e) => {
         e.preventDefault()
         var breakLoop = false
-        console.log('questions', questions, 'arr', arr)
         const userQuiz = questions.map((each, index) => {
             if(!breakLoop) {
                 let answer = arr.map((e, index) => {
@@ -206,7 +183,7 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
                         }
                     } else {
                         setBlankError(true)
-                        
+                        breakLoop = true
                     }
                     
                 }
@@ -215,13 +192,12 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
                     breakLoop = true
                     
                 }
-            }
+            } 
             
             
         })
-        setBlankError(undefined)
-        console.log('submittingg', quizForSubmit)
-        quizForSubmit.current = (userQuiz.filter(each => each !== ''))
+       
+        postUserQuiz(userQuiz.filter(each => each !== ''), breakLoop)
         
         
 
@@ -268,7 +244,7 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
                 firstAnswerBox = findFirstElement.data.id === each.data.id
                 
                 return (<div>
-                    <Form.Control onChange={e => handleInput(e, index)} name="value" value={each.data.value} style={{ backgroundColor: firstAnswerBox ?'#ddffdd': '#FF7F7F', display: 'inline-block', width: '90%' }} />
+                    <Form.Control onChange={e => handleInput(e, index)} name="value" value={each.data.value} maxLength={50} style={{ backgroundColor: firstAnswerBox ?'#ddffdd': '#FF7F7F', display: 'inline-block', width: '90%' }} />
                     <Button onClick={(e) => removeInput(block, id)} style={{ display: 'inline-block' }}>X</Button>
                 </div>)
             }
@@ -277,13 +253,13 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
         })
     }
     const renderQuestions = (block) => {
-        return (<div className={block}><Form.Control name={block} value={questions[block].value[0]} onChange={(e) => handleChange(e, block)} style={{ width: '90%', marginTop: '1%', marginBottom: '1%', display: 'inline-block' }} placeholder="Enter Question"></Form.Control><Button onClick={(e) => removeQuestion(e, block)} style={{ display: 'inline-block' }}>X</Button>
+        return (<div className={block}><Form.Control name={block} value={questions[block].value[0]} onChange={(e) => handleChange(e, block)} maxLength={150} style={{ width: '90%', marginTop: '1%', marginBottom: '1%', display: 'inline-block' }} placeholder="Enter Question"></Form.Control><Button onClick={(e) => removeQuestion(e, block)} style={{ display: 'inline-block' }}>X</Button>
             {renderAnswer(block)}
-            {<Button style={{position: 'relative', display: 'inline-block', marginBottom: '1%' }} name={1} onClick={() => addInput(block, v4())}>Add Answer</Button>}
+            {<Button name={1} onClick={() => addInput(block, v4())}>Add Answer</Button>}
         </div>)
     }
     return (
-        <div className={styles.formContainer}>
+        <div>
             
             
             <Form onSubmit={handleSubmit}>
@@ -293,26 +269,28 @@ export default function FormEdit({updateRenderFormEdit, existingQuiz, user}) {
                 {blankError && <Alert variant='danger'>Please fill out or delete blank questions/answers. Each question must have 2 or more answers</Alert>}
                 
 
-
-                <Form.Group style={{width: '90%'}}as={Row}>
-                <Form.Label style={{fontSize: '30px', marginRight: '-45px', marginTop: '-10px'}} column sm='4' >Score required to match: </Form.Label>
+                <Col sm='8'>
+                <Form.Group style={{marginTop: '10px'}} as={Row}>
+                <Form.Label style={{fontSize: '25px', marginTop: '-10px', marginRight: '-30px'}}column sm='4' >Score required to match: </Form.Label>
+                
                 <Col sm='1'>
                 <Form.Control type='number' max={questions.length} min='1' onChange={(e) => setRequiredToMatch(e.target.value)} name='requiredScore' required></Form.Control>
                 </Col>
                 <Col sm='1'>
-                    <Form.Label style={{marginLeft: '-80px'}} as='h4'>/ {questions.length}</Form.Label>
+                    <Form.Label className='questionLength' style={{marginLeft: '-45px'}} as='h4'>/ {questions.length}</Form.Label>
                 </Col>
                 </Form.Group>
-                
-                <Button style={{position: 'relative', display: 'inline-block'}} onClick={() => {
+                </Col>
+                <Button  onClick={() => {
                     if(questions.length < 10) {
                         return setQuestions([...questions, {block: questions.length, value: ['']}])
                     } else {
                         setError(true)
                     }
                     }}>Add Question</Button>
-                <Button style={{ marginLeft: '1%' }} type='submit' variant='danger'>Submit</Button>
+                <Button onClick={() => console.log(blankError)} style={{ marginLeft: '1%' }} type='submit' variant='danger'>Submit</Button>
             </Form>
+            <Button variant='danger' style={{position: 'absolute', bottom: '10px', left: '15px'}} onClick={hideFormEdit}>Back</Button>
         </div>
     )
 }

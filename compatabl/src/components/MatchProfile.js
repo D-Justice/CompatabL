@@ -1,52 +1,21 @@
-import React, { useState } from 'react'
-import styles from '../css/Profile.module.css'
-import { Card, Form, Button, Row, Label, Col } from 'react-bootstrap'
-import Offcanvas from 'react-bootstrap/Offcanvas'
+import React from 'react'
+import { Button, Row, Col } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container';
-import Image from 'react-bootstrap/Image'
-import FormEdit from './FormEdit'
 import ProfileBar from './ProfileBar'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 
 
 
-export default function MatchProfile({ originalUser, user }) {
-    const [show, setShow] = useState(false)
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const renderMatches = (match, key) => {
-        console.log('match', match)
-        return (
-            <>
-            <Router>
-            {/* <Link to={'profile/' + match.id}>
-                
-            <Image key={key} src={match.photo} roundedCircle style={{ height: '100px', width: '100px', display: 'inline-block', marginLeft: '1%' }} />
-            </Link>
-            <Switch>
-            <Route exact path="profile/:id"><MatchProfile user={match} /></Route>
-            </Switch> */}
-            </Router>
-            </>
-            
+export default function MatchProfile({updateMatchRemoved, updateUserMatches, matchProfileUpdate, loggedInUser, userId, user }) {
 
-        )
-    }
     
 
-    console.log('users', originalUser, user)
     return (
-        <div style={{height: '100%'}}>
+        <div>
             <Container fluid>
                 <Row>
                     <Col>
-                        <ProfileBar user={user}/>
+                        <ProfileBar updateMatchRemoved={updateMatchRemoved} updateUserMatches={updateUserMatches} matchProfileUpdate={matchProfileUpdate} loggedInUser={loggedInUser} userId={userId} removeFromMatches={true} user={user} hideEdit={true}/>
                     </Col>
                     
 

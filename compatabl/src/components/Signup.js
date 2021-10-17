@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import styles from '../css/Quiz.module.css'
-import { Alert, Card, Form, Button, Row, Label, Col } from 'react-bootstrap'
+import { Alert, Form, Button, Row, Col } from 'react-bootstrap'
 import { useHistory } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import ProfileBar from './ProfileBar';
@@ -9,12 +8,13 @@ import ProfileBar from './ProfileBar';
 
 export default function Signup({submitUserSignup}) {
     const history = useHistory()
-    const [userObject, setUserObject] = useState({bio: ''})
+    const [userObject, setUserObject] = useState({bio: '', activities: []})
     const [error, setError] = useState(false)
     const handleSubmit = () => {
         const {
             email,
             firstName,
+            lastName,
             password,
             photo,
             bio,
@@ -23,8 +23,8 @@ export default function Signup({submitUserSignup}) {
             activities,
             preference
         } = userObject
-        if (email && firstName && password && photo && preference) {
-            submitUserSignup(email, firstName, password, photo, bio, age, gender, activities, preference)
+        if (email && firstName && lastName && password && photo && preference) {
+            submitUserSignup(email, firstName, lastName, password, photo, bio, age, gender, activities, preference)
             history.push('/login')
             setError(false)
         } else {
@@ -53,26 +53,19 @@ export default function Signup({submitUserSignup}) {
         
 
         }
-        console.log('userObject', userObject)
-    return (
-        <div>
-            <h1>Signup page</h1>
-            <Container>
-                <Row>
-                    <Col lg={7}>
-
-                        <Form onSubmit={(e) => {
-                            e.preventDefault()
-                            handleSubmit()
-                        }}>
-                            {error && <Alert variant='danger'>Please fill in all boxes with an '*' next to them </Alert>}
-                            <Form.Group className="mb-3">
+    const formElements = () => {
+        return (        <>       
+                        <Form.Group className="mb-3">
                                 <Form.Label>Email address *</Form.Label>
                                 <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='email' type="text" placeholder="yourname@example.com" />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Username *</Form.Label>
-                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='firstName' type="text" placeholder="username"></Form.Control>
+                                <Form.Label>First Name *</Form.Label>
+                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='firstName' type="text" placeholder="first name"></Form.Control>
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Last Name *</Form.Label>
+                                <Form.Control onChange={(e)=> handleChange(e.target.name, e.target.value)} name='lastName' type="text" placeholder="last name"></Form.Control>
                             </Form.Group>
                             <Form.Group className="mb-3">
                                 <Form.Label>Password *</Form.Label>
@@ -118,14 +111,29 @@ export default function Signup({submitUserSignup}) {
                                     <option value='Both'>Both</option>
 
                                 </Form.Select>
-                            </Form.Group>
+                            </Form.Group></>)
+    }
+        console.log('userObject', userObject)
+    return (
+        <div>
+            <h1>Signup page</h1>
+            <Container>
+                <Row>
+                    <Col lg={7}>
+
+                        <Form onSubmit={(e) => {
+                            e.preventDefault()
+                            handleSubmit()
+                        }}>
+                            {error && <Alert variant='danger'>Please fill in all boxes with an '*' next to them </Alert>}
+                            {formElements()}
 
                             <Button type='submit' onSubmit={(e)=>e.preventDefault()} variant="danger">Create</Button>
                         </Form>
 
                     </Col>
                     <Col lg={5}>
-                        {userObject && <ProfileBar user={userObject} /> }
+                        {userObject && <ProfileBar user={userObject} hideEdit={true}/> }
                     </Col>
                 </Row>
             </Container>
