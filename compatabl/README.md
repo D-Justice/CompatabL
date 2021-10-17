@@ -4,7 +4,7 @@ npm i && npm start
 ```
 then in a separate terminal, navigate to the folder and simply start up the json server by typing in:
 ```
-npm startServer
+npm run startServer
 
 ```
 
