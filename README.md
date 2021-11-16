@@ -1,3 +1,3 @@
 # CompatabL
 
-A React Tinder like application 
+A React Tinder like web-application 
