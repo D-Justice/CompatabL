@@ -76,6 +76,46 @@
       ],
       "id": 1,
       "requiredToMatch": "3"
+    },
+    {
+      "email": "phanaxe@gmail.com",
+      "firstName": "Damian",
+      "lastName": "Justice",
+      "password": "test",
+      "photo": "https://thumbs.dreamstime.com/b/happy-cat-closeup-portrait-funny-smile-cardboard-young-blue-background-102078702.jpg",
+      "bio": "Hey, am cat",
+      "age": "18",
+      "gender": "Female",
+      "preference": "Both",
+      "activities": [
+        "Being cat",
+        " am cat",
+        " mice",
+        " no dogs"
+      ],
+      "matches": [],
+      "userQuiz": [],
+      "id": 2
+    },
+    {
+      "email": "test@test.com",
+      "firstName": "Damian",
+      "lastName": "Justice",
+      "password": "test",
+      "photo": "https://tinyjpg.com/images/social/website.jpg",
+      "bio": "Holaaaaaaaaaaaaaaaa",
+      "age": "85",
+      "gender": "Male",
+      "preference": "Both",
+      "activities": [
+        "test",
+        " test",
+        " test",
+        " test"
+      ],
+      "matches": [],
+      "userQuiz": [],
+      "id": 3
     }
   ],
   "selectedUser": [
@@ -84,76 +124,76 @@
       "userInfo": {
         "results": [
           {
-            "gender": "female",
+            "gender": "male",
             "name": {
-              "title": "Miss",
-              "first": "Nieves",
-              "last": "Calvo"
+              "title": "Mr",
+              "first": "Timmothy",
+              "last": "Davidson"
             },
             "location": {
               "street": {
-                "number": 321,
-                "name": "Avenida de La Albufera"
+                "number": 3566,
+                "name": "Elgin St"
               },
-              "city": "Orihuela",
-              "state": "Castilla la Mancha",
-              "country": "Spain",
-              "postcode": 45001,
+              "city": "Independence",
+              "state": "Louisiana",
+              "country": "United States",
+              "postcode": 64370,
               "coordinates": {
-                "latitude": "-20.3107",
-                "longitude": "79.5550"
+                "latitude": "80.3421",
+                "longitude": "150.9708"
               },
               "timezone": {
-                "offset": "+5:45",
-                "description": "Kathmandu"
+                "offset": "-3:30",
+                "description": "Newfoundland"
               }
             },
-            "email": "nieves.calvo@example.com",
+            "email": "timmothy.davidson@example.com",
             "login": {
-              "uuid": "14c02946-999d-4c93-98ae-5478f72d0f3a",
-              "username": "redswan410",
-              "password": "lawson",
-              "salt": "MMJYYKnt",
-              "md5": "6baafac9c4d3a69a4f7c3caeb4d3286f",
-              "sha1": "be79111daf4b05cb030710b31ad666b3991559c7",
-              "sha256": "10fec80c0f7c7b6b5c0a1631766036ca90c2f4a8a377ae7b5e51023b6a497bb2"
+              "uuid": "3454659e-d857-4c01-a9ea-e3fa22cb69c6",
+              "username": "organicwolf686",
+              "password": "penelope",
+              "salt": "32GwCXcf",
+              "md5": "e368ec3f3bb0799f454598aac9ffe68e",
+              "sha1": "4f73658295da8ea39ef1f3720f3025c9b452a377",
+              "sha256": "cc31e24ab95c3fced3ddde9d3a3bc5a8bbd3dd900cb2e516fbd90ccd6fe20ed0"
             },
             "dob": {
-              "date": "1960-05-26T15:25:48.578Z",
-              "age": 61
+              "date": "1995-03-18T07:23:46.045Z",
+              "age": 26
             },
             "registered": {
-              "date": "2009-12-14T16:57:55.841Z",
-              "age": 12
+              "date": "2005-08-09T18:15:50.617Z",
+              "age": 16
             },
-            "phone": "994-180-926",
-            "cell": "642-424-974",
+            "phone": "(611)-764-6745",
+            "cell": "(103)-659-1231",
             "id": {
-              "name": "DNI",
-              "value": "58711783-O"
+              "name": "SSN",
+              "value": "119-14-0412"
             },
             "picture": {
-              "large": "https://randomuser.me/api/portraits/women/51.jpg",
-              "medium": "https://randomuser.me/api/portraits/med/women/51.jpg",
-              "thumbnail": "https://randomuser.me/api/portraits/thumb/women/51.jpg"
+              "large": "https://randomuser.me/api/portraits/men/96.jpg",
+              "medium": "https://randomuser.me/api/portraits/med/men/96.jpg",
+              "thumbnail": "https://randomuser.me/api/portraits/thumb/men/96.jpg"
             },
-            "nat": "ES"
+            "nat": "US"
           }
         ],
         "info": {
-          "seed": "0114d44ad56eb990",
+          "seed": "d484748b87de2d1e",
           "results": 1,
           "page": 1,
           "version": "1.3"
         }
       },
-      "photo": "https://images.unsplash.com/flagged/photo-1564485377544-ce65ce5187df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjUwNTR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzQ0Njk4OTY&ixlib=rb-1.2.1&q=80&w=400",
-      "userBio": "Isn’t online dating a blast? Okay, maybe it can be challenging at times, but it’s still exciting that you have the chance to meet someone special who you might have never met elsewhere. I’m a proud dog mom, an avid gym-goer, and, if you ask my friends, a bit quirky at times. I’m looking for a man who compliments my life and is ready to enjoy all that this world has to bring to the table. If you think we might be a good match, send me a message.",
+      "photo": "https://images.unsplash.com/photo-1566492031773-4f4e44671857?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjUwNTR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzQ1MTQxODc&ixlib=rb-1.2.1&q=80&w=400",
+      "userBio": "Hi, I'm Sam. I own my own Software Development company. I love jazz and go watch my favorite bands as often as possible. To get out of my head, I go rock climbing. I grew up in a very political family and I carry on that tradition by being active in the local campaigns. I find a lot of peace by attending church on Sunday mornings and by being a part of that community. I've been in a couple of great long term relationships and am ready to find someone special to build a life with. Send me a message and let me know what your favorite type of food is. I know the best spots in town!",
       "activities": [
-        "Storm Chasing",
-        "Woodworking",
-        "Soap Making",
-        "jogging"
+        "Croquet",
+        "Weight Lifting",
+        "Scrapbooking",
+        "Tennis"
       ]
     }
   ],
@@ -169,64 +209,23 @@
     {
       "user": {
         "email": "test@test.com",
-        "firstName": "Bart",
-        "lastName": "Simpson",
+        "firstName": "Damian",
+        "lastName": "Justice",
         "password": "test",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/18/Batman_logo.jpg",
-        "bio": "Hello, My name is Homer Simpson",
-        "age": "18",
+        "photo": "https://tinyjpg.com/images/social/website.jpg",
+        "bio": "Holaaaaaaaaaaaaaaaa",
+        "age": "85",
         "gender": "Male",
         "preference": "Both",
         "activities": [
-          "Drinking Beer",
-          " Working",
-          " Sleeping"
+          "test",
+          " test",
+          " test",
+          " test"
         ],
         "matches": [],
-        "userQuiz": [
-          {
-            "question": "Squirrels or Bears?",
-            "answers": [
-              "Bears",
-              "Squirrels"
-            ],
-            "correctAnswer": "Bears",
-            "block": 0,
-            "data": {
-              "id": "cad04006-2042-41d7-8e70-0ea0bb3f8f5d",
-              "value": "Bears"
-            }
-          },
-          {
-            "question": "Water or juice?",
-            "answers": [
-              "Water",
-              "Juice",
-              "Neither"
-            ],
-            "correctAnswer": "Water",
-            "block": 1,
-            "data": {
-              "id": "2a3dbc49-a18f-4ff2-a40a-f0a2e1b4df92",
-              "value": "Squirrels"
-            }
-          },
-          {
-            "question": "How many chickens does it take to screw in a light bulb?",
-            "answers": [
-              "3",
-              "1"
-            ],
-            "correctAnswer": "3",
-            "block": 2,
-            "data": {
-              "id": "7dbcea1f-f343-417c-af9f-16dc9b034073",
-              "value": "Water"
-            }
-          }
-        ],
-        "id": 1,
-        "requiredToMatch": "3"
+        "userQuiz": [],
+        "id": 3
       },
       "id": 1
     }

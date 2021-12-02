@@ -3,7 +3,7 @@ import { Alert, Form, Button, Row, Col } from 'react-bootstrap'
 import Container from 'react-bootstrap/Container';
 import { useHistory } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-
+import '../css/background.css'
 
 export default function Login({ accountCreated, login}) {
     const history = useHistory()
@@ -33,7 +33,10 @@ export default function Login({ accountCreated, login}) {
     
     return (
         <div>
-            <h1>Login page</h1>
+            <div className='background'>
+            </div>
+
+            <div className='content'>
             <Container >
                 {accountCreated && !error && <Alert variant='success'>Account created! Please log in to continue</Alert>}
                 <Row>
@@ -56,6 +59,7 @@ export default function Login({ accountCreated, login}) {
                     </Col>
                 </Row>
             </Container>
+            </div>
         </div>
     )
 }
