@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/compatabl/static/css/main.a0773199.chunk.css",
-    "main.js": "/compatabl/static/js/main.f53dfbe4.chunk.js",
-    "main.js.map": "/compatabl/static/js/main.f53dfbe4.chunk.js.map",
-    "runtime-main.js": "/compatabl/static/js/runtime-main.b01182e5.js",
-    "runtime-main.js.map": "/compatabl/static/js/runtime-main.b01182e5.js.map",
-    "static/css/2.34655d3d.chunk.css": "/compatabl/static/css/2.34655d3d.chunk.css",
-    "static/js/2.62703acd.chunk.js": "/compatabl/static/js/2.62703acd.chunk.js",
-    "static/js/2.62703acd.chunk.js.map": "/compatabl/static/js/2.62703acd.chunk.js.map",
-    "index.html": "/compatabl/index.html",
-    "static/css/2.34655d3d.chunk.css.map": "/compatabl/static/css/2.34655d3d.chunk.css.map",
-    "static/css/main.a0773199.chunk.css.map": "/compatabl/static/css/main.a0773199.chunk.css.map",
-    "static/js/2.62703acd.chunk.js.LICENSE.txt": "/compatabl/static/js/2.62703acd.chunk.js.LICENSE.txt",
-    "static/media/background.css": "/compatabl/static/media/CompatabL.ec698b3e.jpg",
-    "static/media/editIcon.3f69390c.png": "/compatabl/static/media/editIcon.3f69390c.png",
-    "static/media/logo.0d449e83.png": "/compatabl/static/media/logo.0d449e83.png"
+    "main.css": "/CompatabL/static/css/main.21e350d7.chunk.css",
+    "main.js": "/CompatabL/static/js/main.f53dfbe4.chunk.js",
+    "main.js.map": "/CompatabL/static/js/main.f53dfbe4.chunk.js.map",
+    "runtime-main.js": "/CompatabL/static/js/runtime-main.1b1b9bde.js",
+    "runtime-main.js.map": "/CompatabL/static/js/runtime-main.1b1b9bde.js.map",
+    "static/css/2.34655d3d.chunk.css": "/CompatabL/static/css/2.34655d3d.chunk.css",
+    "static/js/2.62703acd.chunk.js": "/CompatabL/static/js/2.62703acd.chunk.js",
+    "static/js/2.62703acd.chunk.js.map": "/CompatabL/static/js/2.62703acd.chunk.js.map",
+    "index.html": "/CompatabL/index.html",
+    "static/css/2.34655d3d.chunk.css.map": "/CompatabL/static/css/2.34655d3d.chunk.css.map",
+    "static/css/main.21e350d7.chunk.css.map": "/CompatabL/static/css/main.21e350d7.chunk.css.map",
+    "static/js/2.62703acd.chunk.js.LICENSE.txt": "/CompatabL/static/js/2.62703acd.chunk.js.LICENSE.txt",
+    "static/media/background.css": "/CompatabL/static/media/CompatabL.ec698b3e.jpg",
+    "static/media/editIcon.3f69390c.png": "/CompatabL/static/media/editIcon.3f69390c.png",
+    "static/media/logo.0d449e83.png": "/CompatabL/static/media/logo.0d449e83.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.b01182e5.js",
+    "static/js/runtime-main.1b1b9bde.js",
     "static/css/2.34655d3d.chunk.css",
     "static/js/2.62703acd.chunk.js",
-    "static/css/main.a0773199.chunk.css",
+    "static/css/main.21e350d7.chunk.css",
     "static/js/main.f53dfbe4.chunk.js"
   ]
 }
