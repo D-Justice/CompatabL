@@ -209,19 +209,19 @@
     {
       "user": {
         "email": "test@test.com",
-        "firstName": "Damian",
-        "lastName": "Justice",
+        "firstName": "test",
+        "lastName": "test",
         "password": "test",
         "photo": "https://tinyjpg.com/images/social/website.jpg",
         "bio": "Holaaaaaaaaaaaaaaaa",
-        "age": "85",
+        "age": "25",
         "gender": "Male",
         "preference": "Both",
         "activities": [
-          "test",
-          " test",
-          " test",
-          " test"
+          "running",
+          "biking",
+          "swimming",
+          "surfing"
         ],
         "matches": [],
         "userQuiz": [],

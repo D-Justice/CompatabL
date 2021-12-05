@@ -49,24 +49,24 @@ export default function Profile({ updateLoggedInUser, user, match, matchProfileU
         setTimeout(() => setMatchRemoved(false), 3000)
     }
     function fetchForm() {
-        fetch('http://localhost:4000/users')
-            .then(resp => resp.json())
-            .then(data => {
-                let existingForm = data.map((each, index) => {
-                    if (each.email === user.email) {
-                        return each
-                    }
-                })
+        // fetch('http://localhost:4000/users')
+        //     .then(resp => resp.json())
+        //     .then(data => {
+        //         let existingForm = data.map((each, index) => {
+        //             if (each.email === user.email) {
+        //                 return each
+        //             }
+        //         })
 
-                existingForm = existingForm.filter(each => each !== undefined)
-                if (existingForm.length > 0) {
-                    setUserQuiz(existingForm[0].userQuiz)
-                } else {
-                    setUserQuiz([])
-                }
+        //         existingForm = existingForm.filter(each => each !== undefined)
+        //         if (existingForm.length > 0) {
+        //             setUserQuiz(existingForm[0].userQuiz)
+        //         } else {
+        //             setUserQuiz([])
+        //         }
                 
-            })
-            .catch(err => console.error(err))
+        //     })
+        //     .catch(err => console.error(err))
 
     }
     useEffect(() => {
@@ -93,6 +93,23 @@ export default function Profile({ updateLoggedInUser, user, match, matchProfileU
         setSubmitSuccess(true)
         setTimeout(() => setSubmitSuccess(false), 4000)
     }
+    const matches = [
+        {
+          "firstName": "Nieves",
+          "lastName": "Calvo",
+          "gender": "Female",
+          "age": 61,
+          "activities": [
+            "Storm Chasing",
+            "Woodworking",
+            "Soap Making",
+            "jogging"
+          ],
+          "bio": "Isn’t online dating a blast? Okay, maybe it can be challenging at times, but it’s still exciting that you have the chance to meet someone special who you might have never met elsewhere. I’m a proud dog mom, an avid gym-goer, and, if you ask my friends, a bit quirky at times. I’m looking for a man who compliments my life and is ready to enjoy all that this world has to bring to the table. If you think we might be a good match, send me a message.",
+          "id": "55b40f51-13c4-4679-b88c-ad10c2743d8a",
+          "photo": "https://images.unsplash.com/flagged/photo-1564485377544-ce65ce5187df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjUwNTR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzQ0Njk4OTY&ixlib=rb-1.2.1&q=80&w=400"
+        }
+      ]
     return (
         <div style={{ height: '100%' }}>
             {submitSuccess && <Alert variant='success'>Quiz successfully submitted!</Alert>}
@@ -143,7 +160,7 @@ export default function Profile({ updateLoggedInUser, user, match, matchProfileU
                                 </Offcanvas.Header>
                                 <Offcanvas.Body>
 
-                                    {user.matches.length > 0 ? user.matches.map((match, index) => renderMatches(match, index)) : <p style={{ color: 'grey', textAlign: 'center' }}>No matches yet...</p>}
+                                    {matches.map((match, index) => renderMatches(match, index))}
 
 
 

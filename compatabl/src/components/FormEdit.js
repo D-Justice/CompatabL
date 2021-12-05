@@ -7,14 +7,8 @@ import '../css/FormEdit.module.css'
 
 export default function FormEdit({hideFormEdit, updateRenderFormEdit, existingQuiz, user}) {
     
-    var existingForm = existingQuiz.map((each, index) => {
-        return each.answers.map((answer, index) => {
-            return {
-                block: each.block, 
-                data: {id: v4(), value: answer}
-            }
-        })})
-    existingForm = existingForm.flat()
+    var existingForm = []
+    existingQuiz = []
     
     const [arr, setArr] = useState(existingForm)
     const [requiredToMatch, setRequiredToMatch] = useState(1)

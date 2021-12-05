@@ -45,47 +45,47 @@ export default function ProfileBar({ updateMatchRemoved, updateUserProfileInfo, 
     const handleRemove = () => {
 
 
-        fetch(`http://localhost:4000/users/${userId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                ...loggedInUser,
-                matches: loggedInUser.matches.filter(each => {
-                    if (user.id !== each.id) {
-                        return each
-                    }
-                })
-            })
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            matchProfileUpdate(false)
-            updateUserMatches(data.matches)
-            updateMatchRemoved()
-            history.push('/profile')
-        })
+        // fetch(`http://localhost:4000/users/${userId}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         ...loggedInUser,
+        //         matches: loggedInUser.matches.filter(each => {
+        //             if (user.id !== each.id) {
+        //                 return each
+        //             }
+        //         })
+        //     })
+        // })
+        // .then(resp => resp.json())
+        // .then(data => {
+        //     matchProfileUpdate(false)
+        //     updateUserMatches(data.matches)
+        //     updateMatchRemoved()
+        //     history.push('/profile')
+        // })
     }
     const updateUserProfile = () => {
-        fetch(`http://localhost:4000/users/${user.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                firstName: userObject.firstName,
-                lastName: userObject.lastName,
-                photo: userObject.photo,
-                age: userObject.age,
-                bio: userObject.bio,
-                activities: userObject.activities,
-                preference: userObject.preference
-            })
-        })
-            .then(resp => resp.json())
-            .then(data => updateLoggedInUser(userObject))
-            .catch(err => console.error(err))
+        // fetch(`http://localhost:4000/users/${user.id}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         firstName: userObject.firstName,
+        //         lastName: userObject.lastName,
+        //         photo: userObject.photo,
+        //         age: userObject.age,
+        //         bio: userObject.bio,
+        //         activities: userObject.activities,
+        //         preference: userObject.preference
+        //     })
+        // })
+        //     .then(resp => resp.json())
+        //     .then(data => updateLoggedInUser(userObject))
+        //     .catch(err => console.error(err))
 
     }
     console.log('userObject', userObject)
