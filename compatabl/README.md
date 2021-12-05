@@ -1,10 +1,10 @@
 To begin this web application please clone and run: 
 ```
-npm i && start
+npm i && npm start
 ```
-after everything has finished loading, simply start up the json server by typing in:
+then in a separate terminal, navigate to the folder and simply start up the json server by typing in:
 ```
-npm startServer
+npm run startServer
 
 ```
 
